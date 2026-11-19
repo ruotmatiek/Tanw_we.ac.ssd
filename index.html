@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Testire – Shop online, pay in your currency</title>
+<meta name="description" content="Testire: global online shopping with prices shown in your local currency.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">Free delivery on orders over $50 · Prices auto-convert to your currency</div>
+
+<header class="head">
+  <button class="btn-cat" id="catBtn" aria-controls="catMenu" aria-expanded="false">☰ <span>Categories</span></button>
+  <a class="logo" href="#" aria-label="Testire home">Testire</a>
+  <form class="search" id="searchForm" role="search">
+    <input id="search" type="search" placeholder="Search products, brands and categories" aria-label="Search products">
+    <button type="submit">Search</button>
+  </form>
+  <label class="country">
+    <span class="sr">Your country</span>
+    <select id="country"></select>
+  </label>
+  <button class="cart-btn" id="cartBtn" aria-label="Open cart">🛒 <span class="badge" id="cartCount">0</span></button>
+</header>
+
+<nav class="drawer left" id="catMenu" aria-label="Product categories">
+  <div class="drawer-h"><b>All products</b><button class="x" data-close>×</button></div>
+  <ul id="catList"></ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <div>
+      <h1>Shop the world. Pay in your own money.</h1>
+      <p>Pick your country and every price switches from US$ to your local currency instantly.</p>
+      <button class="primary" id="shopNow">Browse all products</button>
+    </div>
+    <div class="rate" id="rateBox" aria-live="polite"></div>
+  </section>
+
+  <div class="chips" id="chips" role="tablist"></div>
+
+  <div class="bar">
+    <h2 id="title">All products</h2>
+    <label>Sort
+      <select id="sort">
+        <option value="pop">Popular</option>
+        <option value="low">Price: low to high</option>
+        <option value="high">Price: high to low</option>
+        <option value="rate">Top rated</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No products match your search. Try another word or category.</p>
+</main>
+
+<footer>
+  <p><b>Testire</b> – online shopping for the global market.</p>
+  <p>Rates are indicative and refresh when you are online. © 2026 Testire</p>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+
+<aside class="drawer right" id="cart" aria-label="Shopping cart">
+  <div class="drawer-h"><b>Your cart</b><button class="x" data-close>×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-f">
+    <div class="row"><span>Subtotal</span><b id="subtotal">0</b></div>
+    <div class="row"><span>Delivery</span><b id="delivery">0</b></div>
+    <div class="row total"><span>Total</span><b id="total">0</b></div>
+    <small id="usdNote"></small>
+    <button class="primary wide" id="checkout">Checkout</button>
+  </div>
+</aside>
+
+<dialog id="orderDlg">
+  <form method="dialog" id="orderForm">
+    <h3>Place your order</h3>
+    <label>Full name<input name="name" required autocomplete="name"></label>
+    <label>Phone<input name="phone" type="tel" required autocomplete="tel"></label>
+    <label>Delivery address<input name="addr" required autocomplete="street-address"></label>
+    <label>Payment
+      <select name="pay"><option>Pay on delivery</option><option>Mobile money</option><option>Card</option></select>
+    </label>
+    <p id="orderSum"></p>
+    <div class="actions">
+      <button type="button" class="ghost" id="cancelOrder">Cancel</button>
+      <button class="primary" type="submit">Confirm order</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
